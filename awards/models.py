@@ -36,3 +36,21 @@ class Projects(models.Model):
 
     def delete_projects(self):
         self.delete()    
+
+
+    @classmethod
+    def search_projects(cls, name):
+        return cls.objects.filter(title__icontains=name).all()
+RATE_CHOICES = [
+(1,'1'),
+(2,'2'),
+(3,'3-Below average'),
+(4,'4'),
+(5,'5- Neutral'),
+(6,'6'),
+(7,'7'),
+(8,'8'),
+(9,'9'),
+(10,'10-Excellent'),
+]
+
