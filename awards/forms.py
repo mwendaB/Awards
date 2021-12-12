@@ -42,5 +42,13 @@ class RegistrationForm(UserCreationForm):
 
             user.save()
         return user  
+
+    
+class RateForm(forms.ModelForm):
+    
+    class Meta:
+        model = Review
+        fields = ['text','design','usability','content']          
+           
     
         
