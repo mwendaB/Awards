@@ -26,7 +26,7 @@ class UpdateUserProfileForm(forms.ModelForm):
 class projectForm(forms.ModelForm):
     class Meta:
         model = Projects
-        fields = ['title','description','shot','link']  
+        fields = ['title','description','shot','url']  
 
         
 class RegistrationForm(UserCreationForm):

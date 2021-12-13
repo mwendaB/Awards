@@ -1,0 +1,68 @@
+<div class="" style="font-family: 'Jost', sans-serif;">
+    {%extends 'base.html'%}
+    {%block content%}
+
+    <style>
+        body{
+            background-color: white;
+            color: black;
+        }
+        .img-fluid {
+            height:200px;
+        }
+    </style>
+
+
+
+    <div class="container-fluid"
+        style="background-image: url('https://kelsey.dexignzone.com/xhtml/images/main-slider/slide1.jpg');  background-repeat: no-repeat; background-size: cover; height: 100vh;  background-position: center; text-align:center; overflow-x:hidden; opacity: 1;margin-top:-10px;">
+
+
+        <br><br><br><br><br><br><br><h1 style="  font-size:50px; margin-top:60px; color:aquamarine; font-family: 'Lobster Two', cursive;">Projects
+        </h1>
+        <p style="color: beige;"><b> By: </b>Wairimu</p>
+        <div>
+            <img src="https://ucarecdn.com/257afbc7-9e6d-4984-9939-f83076ad6d84/progressremovebgpreview.png" alt="">
+        </div>
+
+        <a href="https://pure-vaibu-and-inshallah.herokuapp.com/" class="btn btn-info btn-rounded" target="_blank">View Site</a>
+    </div><br>
+
+
+
+
+
+
+
+
+
+
+
+
+    <h3 style="text-align: center;">Sample Projects</h3><br><br>
+    <div class="row ml-5">
+        {%for proj in projects%}
+        <div class="col-md-3">
+            <div class="card mb-5">
+                <div class="view view-cascade overlay">
+                    <img src="{{proj.shot.url}}" class="img-fluid" alt="">
+                    <a href="awards/{{proj.id}}">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <h5 class="">{{proj.title}}</h5>
+                    <p class="card-text"><b>Description:</b>{{proj.description}}</p>
+                    <p class="card-text"><b>Posted on:</b>{{proj.datecreated}}</p>
+                    <p class="card-text"><b>Author:</b>{{proj.user}}</p>
+                    <a href="awards/{{proj.id}}">See More</a>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div><br>
+
+    <h4 style="text-align: center;">&COPY;Awwwards 2021</h4>
+
+    {%endblock%}
+</div>

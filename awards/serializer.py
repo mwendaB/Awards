@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import Profile,Projects
 
-
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
@@ -11,4 +10,4 @@ class ProfileSerializer(serializers.ModelSerializer):
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Projects
-        fields = ('title', 'description', 'shot','link','user')
+        fields = ('title', 'description', 'shot','url','user')
