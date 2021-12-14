@@ -49,6 +49,7 @@ def profile(request):
     posts = Project.objects.all().order_by('-date_posted')
     
     return render(request, 'awards/profile.html', {'posts':posts})
+    
 @login_required(login_url='/accounts/login/')
 def edit(request):
     

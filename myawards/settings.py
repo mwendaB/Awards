@@ -16,6 +16,7 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 from decouple import config
+from django.contrib.auth.decorators import login_required
 import django_heroku
 import dj_database_url
 
@@ -149,6 +150,9 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
 
 
 django_heroku.settings(locals())
