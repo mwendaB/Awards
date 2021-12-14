@@ -1,0 +1,54 @@
+{% extends 'awards/base.html' %}
+{% block content %}
+<div class="container" style="background-color: white;">
+	<span class="float-left container ml-5 mt-3">
+		
+	</span>
+	<div class="container  hvr-float-shadow"  style="color: black;">
+		<div class="profile-layout text-center">
+			<div>
+				<img src="{{ user.profile.profile_photo.url }}" class="rounded-circle border responsive hvr-grow" alt="..."
+				     height="120"
+				     width="120">
+			</div>
+			<h1 class="text-uppercase mt-3 font-weight-bold" style= "font-size: 15px;">{{ user.profile.user }}</h1>
+			<hr style="width: 100px; color: black;">
+			<a href=""  ><h4 class="text-body" >{{ user.email }}</h4></a>
+			<div>
+				<h6 class="font-weight-bold mt-3" >{{ user.profile.bio }}</h6>
+			</div>
+			<div>
+				<a href="/new/profile" style="text-decoration: none; ">
+					<button class="btn btn-lg mx-3 mt-4 hvr-float-shadow ">Edit Profile</button>
+				</a>
+			</div>
+			<span class="text-muted" style="font-size: 10px;">Last modified: {{ user.profile.updated_at }}</span>
+		</div>
+	</div>
+</div>
+<div class="container mt-5" style="color: black;">
+	<h1 class="text-center" style="color: black; font-weight: bolder;">PROJECTS</h1>
+	<hr style="width: 80px">
+	{% for project in posts %}
+	{% if project.user == user.profile.user %}
+	<div class="row mt-5 hvr-grow ">
+		<div class="col-md-3">
+			<img src="{{ project.image.url }}" class="img-thumbnail" width="500">
+		</div>
+		<div class="col-md-9">
+			<p>Project Name: {{ project.sitename }}</p>
+			<p>Description: {{ project.desc }}</p>
+			<p>Technologies: {{ project.technologies }}</p>
+			<p>Categories: {{ project.categories }}</p>
+			<p class=""><a href="{{ project.link }}">
+				<button class="btn hvr-bubble-float-bottom " style="background-color: black; color: white;">LINK</button>
+			</a></p>
+			<p class="text-muted float-right">{{ project.post_date }}</p>
+		</div>
+	</div>
+	<hr>
+	{% endif %}
+	{% endfor %}
+
+</div>
+{% endblock %}

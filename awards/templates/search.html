@@ -1,40 +1,50 @@
-<div class="class" style="font-family: 'Jost', sans-serif;">
-    {% extends 'base.html' %}
-    {% block content %}
-    <div class="container mt-5">
+{% extends 'awards/base.html' %} 
+{% block content %}
+<div class="container" style="color: black;">
+    <div class="row">
+        {% if posts %}
+        <h3>Found {{ posts|length }}</h3>
+        {% else %}
+        <h3>Found 0 posts of searched term {{message}}</h3>
+        {% endif %}
+        <br />
+        <br />
+
         <div class="row">
-            <div class="col-md-6 mx-auto">
-                {% if results %}
-                <h5 class="text-center">Found {{ results|length }} projects{{ results|pluralize }}</h5>
-                {% else %}
-                <h5 class="text-center"> Found 0 user with username <strong>{{message}}</strong></h5>
+        {% for post in posts %}
+        <a href="{% url 'project' post.id %}">
 
-                <a class="d-block mx-auto" href="/">
-                    <button class="btn btn-sm btn-info d-block mx-auto">Back Home</button>
-                </a>
-                {% endif %}
-                <hr>
+            <li class="row mt-5 hvr-grow border-bottom">
+              <div class="col-md-3">
+                <a href="{% url 'project' post.id %}"><span style="display: none;">{{ post.sitename }}</span><img
+                        src="{{ post.image.url }}" class="img-thumbnail" width="500"></a>
+              </div>
+              <div class="col-md-9 project-font">
+                <a class="user-head" href="">
+                  <button class="btn bg-transparent btn-lg" data-toggle="tooltip" data-placement="bottom"
+                          title="User">
+                    <img src="{{ user.profile.profile_photo.url }}" class="rounded-circle" width="40" height="40">
+                  <span class="username mx-2" style="font-size: 25px;">{{post.user}}</span></button></a>
+                <div class="ml-4">
+                  <p>Project Name: {{ post.sitename }}</p>
+                  <p>Description: {{ post.desc }}</p>
+                  <p>Technologies: {{ post.technologies }}</p>
+                  <p>Categories: {{ post.categories }}</p>
+                  <p class=""><a href="{{ post.link }}">
+                    <button class="btn btn-lg">LINK</button>
+                  </a></p>
+                  <p class="text-muted float-right">{{ post.post_date }}</p>
+                </div>
+              </div>
+            </li>
+            
+          </a>
 
+                {% endfor %}
             </div>
-
+            </div>
         </div>
-
-        {% if results %}
-        {% for res in results %}
-
-        <div class="row pt-3">
-            <div class="col-md-8">
-                <img src="{{res.shot.url}}" alt="oops cant display" height="300px">
-            </div>
-            <div class="col-md-4">
-                <span><strong><a href="{{res.url}}">{{res.description}}</a></strong></span>
-            </div>
         </div>
-        {%endfor%}
-        {%endif%}
-
     </div>
-
-
-    {% endblock %}
 </div>
+{% endblock %}

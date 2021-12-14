@@ -1,39 +1,55 @@
+{%extends "registration/base.html"%}
 
-{%extends "base.html"%}
-{%load bootstrap4%}
+{% load bootstrap5 %}
 {% block content %}
-<div class="container" style="font-family: 'Jost', sans-serif;">
-    <div class="row">
-        <!-- Empty div -->
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-4">
-            {% if form.errors %}
-            <p> Password or Username is incorrect </p>
-            {% endif %}
-            <div class="panel panel-default">
-
-                <div class="panel-body card p-5 mt-5" style="background-color:black;color:white;">
-                    <h3 class="text-center">Sign In</h3>
-
-                    <form method="post">
-                        {% csrf_token %}
-                        {% bootstrap_form form %}
-
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-primary btn-sm" value="Login">
-                        </div>
-                        <p class="container">You dont have an account? <a href="/register"> Sign Up</a></p>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </div>
-        <!-- empty div -->
+<div class="container">
+  <div class="row">
+    <!-- Empty div -->
+    <div class="col-md-3 phones" >
+      
+       
     </div>
+    <div class="col-md-6 " >
+      {% if form.errors %}
+        <p> Password or Username is incorrect </p>
+      {% endif %}
+      <div class="panel panel-default"style="background-color: white !important;" >
+
+        <div class="panel-heading" style="background-color: white !important;">
+          <h3 class="text-center" >
+            
+              Awards
+          </h3>
+        </div>
+        <div class="panel-body">
+
+          <form  action="/accounts/login/" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form%}
+
+            <div class="form-group" style=" width: 100%; padding-top: 3%;">
+                <input type="submit" class="btn" value="Login"  style="align-items: center; width: 100%; " >
+            </div>
+              
+            
+
+            <input type="hidden" name="next" value="{{next}}">
+
+          </form>
+          <div class="sign-up" style="padding-left: 28%; padding-top: 3%;">
+             <span class="p">Don't have an account?</span>
+               
+             <a href="/accounts/register/">Sign Up</a>
+        </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    <!-- empty div -->
+    <!-- <div class="col-md-3"></div> -->
+  </div>
 </div>
 
 {% endblock %}

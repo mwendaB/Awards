@@ -1,40 +1,32 @@
 from django import forms
-from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Projects,Profile,Review,RATE_CHOICES
+from django.contrib.auth.models import User
+from .models import Profile,Project,Rating
 
+class UpdateUserForm(forms.ModelForm):
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
 
-
-class profileForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = [ 'photo', 'bio']
-        
-class UserUpdateForm(forms.ModelForm):
-    email = forms.EmailField()
     class Meta:
         model = User
-        fields = ['username','email']
+        fields = ('username', 'email')
 
 
 class UpdateUserProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['bio', 'photo']     
+        fields = [ 'name','profile_photo', 'bio']
 
-
-class projectForm(forms.ModelForm):
+class NewPostForm(forms.ModelForm):
     class Meta:
-        model = Projects
-        fields = ['title','description','shot','url']  
+        model = Project
+        exclude = ['user', 'post_date']
+        widgets = {
+            'tags': forms.CheckboxSelectMultiple(),
+        }        
 
 
-    
-class RateForm(forms.ModelForm):
-    
+
+class ProjectRatingForm(forms.ModelForm):
     class Meta:
-        model = Review
-        fields = ['text','design','usability','content']          
-           
-    
-        
+        model = Rating
+        exclude = ['project', 'pub_date', 'user']

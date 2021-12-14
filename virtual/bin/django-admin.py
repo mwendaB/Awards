@@ -1,4 +1,4 @@
-#!/home/moringaschool/Documents/django/Awards/virtual/bin/python
+#!/home/moringaschool/Music/cl/Awwards/virtual/bin/python
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

@@ -1,0 +1,73 @@
+{%extends 'awards/base.html'%}
+{% load mathfilters %}
+{% block content %}
+<div class="container mt-5 border-left border-right project-font" style="color: black;">
+	<h3 class="text-center" >{{ project.sitename }} by <span class="text-uppercase">{{ project.user }}</span></h3>
+	<hr style="width: 150px">
+	<div class="row mt-4">
+		<div class="col-md-6 border-right">
+			<div class="project-info p-5">
+				<h3 class="text-center font-weight-bold">ABOUT </h3>
+				<hr style="width: 80px">
+				<h5 class="mt-3 font-weight-bold">Description</h5>
+				{{ project.description }}
+				<h5 class="mt-3 font-weight-bold">Categories</h5>
+				{{ project.categories }}
+				<h5 class="mt-3  font-weight-bold">Technologies</h5>
+				{{ project.technologies }}
+				<p class="text-muted mt-3"> Posted {{ project.date_posted|timesince }} ago </p>
+			</div>
+			<div class="ml-5">
+				<h3 class="text-center font-weight-bold">SCREENSHOT</h3>
+				<hr style="width: 80px">
+				
+							<img src="{{ project.image.url }}" alt="First Slide" style="max-width: 100%; padding-right: 5%; padding-bottom: 5%;">
+							
+			</div>
+		</div>
+		<div class="col-md-6 text-center">
+			<h3 class="text-center mt-5 font-weight-bold">RATINGS</h3>
+			<hr style="width: 80px">
+			<a href="{% url 'review' project.id %}">
+				<button class="btn" style="background-color: black; color: white; width: 50%;"> RATE</button>
+			</a>
+			{% if ratings %}
+			<div class="table-responsive" style="padding-top: 5%;" >
+				<table class="table table-hover " style="background-color: black; color: white;"> 
+					<thead>
+					<tr>
+						<th scope="col"><i class="feather-16 ml-5" data-feather="user"></i></th>
+						<th scope="col">Usability</th>
+						<th scope="col">Design</th>
+						<th scope="col">Content</th>
+						<th scope="col">Average</th>
+					</tr>
+					</thead>
+					<tbody>
+					{% for rating in ratings %}
+					<tr>
+						<th scope="row" class="toggle-review">
+						                                    <b class="ml-2">{{rating.user.username}}</b>
+						</th>
+						<td>{{rating.usability_rating}}</td>
+						<td>{{rating.design_rating}}</td>
+						<td>{{rating.content_rating}}</td>
+						<td>{{ rating.content_rating | add:rating.design_rating |add:rating.usability_rating|div:3|truncatechars:6}}
+						</td>
+					</tr>
+					<tr class="" style="background-color: black;">
+						<th scope="row" class=""><span class="" style="color: white;">Comment: </span></th>
+						<td colspan="4">{{ rating.review }}</td>
+					</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+		{% else %}
+		<h5 class="text-center" style="padding-top: 5%;">No reviews yet. Be the first to review</h5>
+		{% endif %}
+
+	</div>
+</div>
+{% endblock %}

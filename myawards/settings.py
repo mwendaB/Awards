@@ -38,10 +38,12 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'awards',
-    'star_ratings',
     'rest_framework',
-    'bootstrap4',
+    'crispy_forms',
+    'django_registration',
+    'bootstrap5',
     'cloudinary',
+    'mathfilters',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -87,7 +89,7 @@ WSGI_APPLICATION = 'myawards.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'awards',
+        'NAME': 'gift',
         'USER' : 'moringaschool',
         'PASSWORD' :'mwendaB',
 

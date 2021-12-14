@@ -1,4 +1,4 @@
-#!/home/moringaschool/Documents/django/Awards/virtual/bin/python
+#!/home/moringaschool/Music/cl/Awwards/virtual/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
