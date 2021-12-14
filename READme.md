@@ -47,9 +47,8 @@ $ python3 manage.py runserver
 
 #### Live link
  you can otherwise view the site by running the following url on your web browser :
-```
-https://awards1.herokuapp.com/
-```
+ [Awards](https://awards1.herokuapp.com/)
+
 
 ### Technologies Used
 
