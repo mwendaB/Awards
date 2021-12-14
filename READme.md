@@ -1,7 +1,7 @@
-### Awards-Ip
+### Awards
 
 ### Author
-Daniel Mutai
+Brian Mwenda
 
 ### Description
 
@@ -11,7 +11,7 @@ This application allows the users to view projects posted by other users rate th
 
 #### Prerequisites
 
-- python3.6
+- python3
 - pip
 
 #### Installation
