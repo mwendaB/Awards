@@ -11,7 +11,7 @@ from django.core.exceptions import ObjectDoesNotExist
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    profile_photo = CloudinaryField('image', default='media/default.png')
+    profile_photo = CloudinaryField('image', default='static/profilepic/default.jpg')
     bio = models.CharField(blank=True,default='Hey there Im using awards', max_length = 200)
     name = models.CharField(blank=True, max_length=120)
     updated_at = models.DateTimeField(auto_now=True)

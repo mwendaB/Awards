@@ -7,11 +7,8 @@ from django.db.models import Avg
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render,redirect,get_object_or_404
 from .forms import UpdateUserForm,UpdateUserProfileForm,NewPostForm,ProjectRatingForm
-
-
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
 from .serializer import ProjectsSerializer,ProjectsSerializer1
 from rest_framework import status
 
